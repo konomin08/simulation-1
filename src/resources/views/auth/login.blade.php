@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('body-class', 'login-page')
+
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 @endsection
@@ -42,11 +44,11 @@
       </div>
     </div>
     <div class="form__button">
-      <button class="form__button-submit" type="submit">ログイン</button>
+      <button class="form__button-submit" type="submit">ログインする</button>
     </div>
   </form>
   <div class="register__link">
-    <a class="register__button-submit" href="/register">会員登録の方はこちら</a>
+    <a class="register__button-submit" href="/register">会員登録はこちら</a>
   </div>
 </div>
 @endsection

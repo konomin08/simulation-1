@@ -1,36 +1,40 @@
 @extends('layouts.app')
 
-@section('css')
-<link rel="stylesheet" href="{{ asset('css/index.css') }}">
-@endsection
-
 @section('content')
-<div class="attendance__alert">
-  // メッセージ機能
-</div>
+<div class="container">
 
-<div class="attendance__content">
-  <div class="attendance__panel">
-    <form class="attendance__button">
-      <button class="attendance__button-submit" type="submit">勤務開始</button>
-    </form>
-    <form class="attendance__button">
-      <button class="attendance__button-submit" type="submit">勤務終了</button>
-    </form>
-  </div>
-  <div class="attendance-table">
-    <table class="attendance-table__inner">
-      <tr class="attendance-table__row">
-        <th class="attendance-table__header">名前</th>
-        <th class="attendance-table__header">開始時間</th>
-        <th class="attendance-table__header">終了時間</th>
-      </tr>
-      <tr class="attendance-table__row">
-        <td class="attendance-table__item">サンプル太郎</td>
-        <td class="attendance-table__item">サンプル</td>
-        <td class="attendance-table__item">サンプル</td>
-      </tr>
-    </table>
-  </div>
+    <!-- タブ切り替え -->
+    <div class="tab-switch">
+        <a href="{{ request('search') ? url('/') . '?search=' . urlencode(request('search')) : url('/') }}"
+           class="tab-link {{ $page !== 'mylist' ? 'active' : '' }}">
+            おすすめ
+        </a>
+        <a href="{{ route('mylist', ['search' => request('search')]) }}"
+           class="tab-link {{ $page === 'mylist' ? 'active' : '' }}">
+            マイリスト
+        </a>
+    </div>
+
+    <!-- 商品一覧 -->
+    <div class="product-list">
+        @forelse ($products as $product)
+            <div class="product-item">
+                <a href="{{ route('item.show', ['item_id' => $product->id]) }}">
+                    <img src="{{ $product->img_url }}" alt="{{ $product->name }}" class="product-image">
+                </a>
+                <p>{{ $product->name }}</p>
+                @if ($product->is_sold)
+                    <p class="sold-text">Sold</p>
+                @endif
+            </div>
+        @empty
+            @if ($page === 'mylist')
+                <p>※ いいねした商品はありません。</p>
+            @else
+                <p>※ 商品が見つかりません。</p>
+            @endif
+
+        @endforelse
+    </div>
 </div>
 @endsection

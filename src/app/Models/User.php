@@ -41,4 +41,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function likedProducts()
+    {
+        return $this->belongsToMany(
+            \App\Models\Product::class,
+            'likes',
+            'user_id',
+            'product_id'
+        )->withTimestamps();
+    }
 }

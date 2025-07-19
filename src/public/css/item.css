@@ -1,0 +1,116 @@
+.item-detail__container {
+    display: flex;
+    gap: 40px;
+    padding: 60px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start;
+  }
+  
+  .item-detail__image img {
+    width: 400px;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+  }
+  
+  .item-detail__info {
+    flex: 1;
+  }
+  
+  .item-detail__title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .item-detail__price {
+    font-size: 24px;
+    color: #f55;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .item-detail__section {
+    margin-bottom: 20px;
+  }
+  
+  .item-detail__label {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .item-detail__description {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+  }
+  
+  .item-detail__buy-button {
+    display: inline-block;
+    padding: 16px 40px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #f55;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  .item-detail__buy-button:hover {
+    background-color: #e44;
+  }
+  .comment-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .comment-profile-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .comment-text {
+    margin-left: 18px;
+  }
+  
+  .comment-username {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .item-detail__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.item-detail__actions span {
+    display: inline-block;
+    writing-mode: horizontal-tb;
+  }
+  .like-icon-image {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    object-fit: contain;
+    vertical-align: middle;
+  }
+  
+  .comment-icon-image {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-left: 10px;
+  }

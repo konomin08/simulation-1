@@ -1,46 +1,131 @@
+/* ヘッダー全体 */
 .header {
     background: #000;
   }
   
+  /* ヘッダー内のラッパー */
   .header__inner {
     margin: 0 auto;
-    padding: 20px 15px;
+    padding: 20px 40px;
     max-width: 1230px;
-  }
-  
-  .header-utilities {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
   }
   
-  .header__logo {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 24px;
+  /* ロゴ */
+  .header-logo img {
+    width: 370px;
+    height: 36px;
   }
   
-  .header-utilities nav {
-    width: 18%;
+  /* 検索フォーム */
+  .header-search input[type="text"] {
+    width: 500px;
+    height: 50px;
+    padding: 0 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
   }
   
+  /* ナビゲーション */
   .header-nav {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
   
-  .header-nav__link {
+  .header-nav li {
+    list-style: none;
+  }
+  
+  .header-nav a {
     color: #fff;
     text-decoration: none;
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-align: center;
+    vertical-align: middle;
   }
   
+  /* ログアウトボタン */
   .header-nav__button {
     border: none;
     background: transparent;
     color: #fff;
-    font-size: 16px;
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 24px;
     cursor: pointer;
+    line-height: 1;
+    letter-spacing: 0;
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  /* タブ切り替え */
+  .tab-switch {
+    display: flex;
+    gap: 30px;
+    margin-top: 40px;
+    justify-content: center;
+  }
+  
+  .tab-link {
+    width: 155px;
+    height: 40px;
+    display: inline-block;
+    font-size: 24px;
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0;
+    text-align: center;
+    vertical-align: middle;
+    color: #000;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+  }
+  
+  .tab-link:hover {
+    opacity: 0.8;
+  }
+  
+  .tab-link.active {
+    font-weight: bold;
+    text-decoration: underline;
+    border-color: #000;
+  }
+  
+  /* 商品一覧 */
+  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .product-item {
+    width: 200px;
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  .product-item img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .sold-text {
+    color: red;
   }
   

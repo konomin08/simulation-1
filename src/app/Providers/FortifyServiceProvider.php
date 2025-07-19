@@ -28,6 +28,8 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Fortify::ignoreRoutes();
+
         Fortify::createUsersUsing(CreateNewUser::class);
 
         Fortify::registerView(function () {
@@ -37,6 +39,16 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::loginView(function () {
             return view('auth.login');
         });
+
+        app()->singleton(
+            \Laravel\Fortify\Contracts\LoginResponse::class,
+            fn () => new class implements \Laravel\Fortify\Contracts\LoginResponse {
+                public function toResponse($request)
+                {
+                    return redirect('/');
+                }
+            }
+        );
 
         RateLimiter::for('login', function (Request $request) {
             $email = (string) $request->email;
