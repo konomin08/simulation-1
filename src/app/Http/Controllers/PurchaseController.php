@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+
 
 class PurchaseController extends Controller
 {
@@ -33,9 +35,18 @@ class PurchaseController extends Controller
     public function show($item_id)
     {
         $product = Product::findOrFail($item_id);
-        $user = auth()->user(); // ログインユーザー
-
-        return view('purchase.show', compact('product', 'user'));
+        $user = Auth::user();
+        $address = \App\Models\DeliveryAddress::where('user_id', $user->id)
+            ->where('product_id', $product->id)
+            ->first();
+    
+        // ここに追加（商品ごとの配送先を取得）
+        $address = \App\Models\DeliveryAddress::where('user_id', $user->id)
+            ->where('product_id', $item_id)
+            ->first();
+    
+        return view('purchase.show', compact('product', 'user', 'address'));
     }
+
 
 }

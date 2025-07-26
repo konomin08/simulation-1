@@ -33,6 +33,11 @@ class ProductController extends Controller
     // マイリスト
     public function mylist(Request $request)
     {
+        if (!Auth::check()) {
+            // 未ログイン時は空の商品一覧を表示
+            return view('index', ['products' => collect()])->with('page', 'mylist');
+        }
+    
         $user = Auth::user();
         $query = $user->likedProducts();
     
@@ -45,5 +50,6 @@ class ProductController extends Controller
     
         return view('index', compact('products'))->with('page', 'mylist');
     }
+    
     
 }

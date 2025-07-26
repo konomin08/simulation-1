@@ -6,14 +6,17 @@ use App\Models\Product;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\CommentRequest;
 
 class CommentController extends Controller
 {
-    public function store(Request $request, Product $product)
+    public function store(CommentRequest $request, Product $product)
     {
-        $request->validate([
-            'comment' => 'required|string|max:1000',
-        ]);
+        if (!Auth::check()) {
+            return redirect()->back()
+                ->withErrors(['comment' => 'コメントを投稿するには ログイン が必要です。'])
+                ->withInput();
+        }
 
         $product->comments()->create([
             'user_id' => Auth::id(),
@@ -22,9 +25,12 @@ class CommentController extends Controller
 
         return redirect()->back()->with('status', 'コメントを投稿しました！');
     }
-    public function comments()
-    {
-    return $this->hasMany(Comment::class);
-    }
+
+
+
+    // public function comments()
+    // {
+    // return $this->hasMany(Comment::class);
+    // }
 
 }

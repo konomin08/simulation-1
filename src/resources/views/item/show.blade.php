@@ -55,13 +55,14 @@
         <div class="item-detail__section">
         <h3>コメント ({{ $product->comments->count() ?? 0 }})</h3>
 
+        {{-- コメント一覧 --}}
         @foreach ($product->comments ?? [] as $comment)
         <div class="comment-item">
             <img
-            src="{{ asset('storage/' . ($comment->user->profile_image ?? 'default.png')) }}" 
+            src="{{ asset('storage/' . ($comment->user->profile_image ?? 'default.png')) }}"
             alt="{{ $comment->user->name ?? 'ゲスト' }}"
-            class="comment-profile-image">
-
+            class="comment-profile-image"
+            >
             <div class="comment-text">
             <span class="comment-username">{{ $comment->user->name ?? 'ゲスト' }}</span>
             <p>{{ $comment->content }}</p>
@@ -69,13 +70,21 @@
         </div>
         @endforeach
 
-
+        {{-- コメント投稿フォーム --}}
         <form action="{{ route('comment.store', $product->id) }}" method="POST" style="margin-top: 20px;">
             @csrf
+
             <label for="comment">商品へのコメント</label><br>
-            <textarea name="comment" rows="4" cols="50"></textarea><br>
-            <button type="submit" class="item-detail__comment-button">コメントする</button>
+            <textarea name="comment" rows="4" cols="50">{{ old('comment') }}</textarea>
+
+            {{-- エラーメッセージ（赤文字で表示） --}}
+            @if ($errors->has('comment'))
+                <p class="form__error">{{ $errors->first('comment') }}</p>
+            @endif
+
+        <button type="submit" class="item-detail__buy-button">コメントする</button>
         </form>
+
         </div>
 
 

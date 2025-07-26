@@ -114,3 +114,9 @@
     vertical-align: middle;
     margin-left: 10px;
   }
+  .form__error {
+    color: #ff0000;
+    margin-top: 8px;
+    text-align: left;
+    font-size: 14px;
+  }

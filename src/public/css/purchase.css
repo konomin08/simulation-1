@@ -125,3 +125,14 @@
     justify-content: space-between;
     align-items: flex-start;
   }
+  .address-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .change-address-link {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: underline;
+  }

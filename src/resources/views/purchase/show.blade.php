@@ -33,14 +33,18 @@
 
         <!-- 配送先 -->
         <div class="purchase-user-address">
-          <h4>配送先</h4>
-          @if ($user)
-            <p>{{ $user->zipcode }} {{ $user->address }} {{ $user->building }}</p>
+        <div class="address-header">
+            <h4>配送先</h4>
             <a href="{{ url('/purchase/address/' . $product->id) }}" class="change-address-link">変更する</a>
-          @else
-            <p>ログインして住所情報を確認してください。</p>
-          @endif
         </div>
+
+        @if ($address)
+            <p>{{ $address->zipcode }} {{ $address->address }} {{ $address->building }}</p>
+        @else
+            <p>{{ $user->zipcode }} {{ $user->address }} {{ $user->building }}</p>
+        @endif
+
+
       </div>
     </div>
 
