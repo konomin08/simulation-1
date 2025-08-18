@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-    // 商品一覧（おすすめ）
     public function index(Request $request)
     {
         $query = Product::query();
@@ -30,11 +29,9 @@ class ProductController extends Controller
         return view('index', compact('products'))->with('page', 'recommend');
     }
 
-    // マイリスト
     public function mylist(Request $request)
     {
         if (!Auth::check()) {
-            // 未ログイン時は空の商品一覧を表示
             return view('index', ['products' => collect()])->with('page', 'mylist');
         }
     

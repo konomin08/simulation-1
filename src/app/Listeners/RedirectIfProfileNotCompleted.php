@@ -12,7 +12,6 @@ class RedirectIfProfileNotCompleted
         $user = $event->user;
 
         if (!$user->profile_completed) {
-            // セッションにフラグを入れて後でリダイレクトに使う
             Session::put('redirect_to_profile', true);
         }
     }

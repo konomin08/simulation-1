@@ -8,7 +8,7 @@ class RegisterRequest extends FormRequest
 {
     public function authorize()
     {
-        return true; // 誰でも使えるようにtrueにしておく
+        return true;
     }
 
     public function rules()

@@ -25,12 +25,4 @@ class CommentController extends Controller
 
         return redirect()->back()->with('status', 'コメントを投稿しました！');
     }
-
-
-
-    // public function comments()
-    // {
-    // return $this->hasMany(Comment::class);
-    // }
-
 }

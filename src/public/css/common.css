@@ -3,7 +3,6 @@
     background: #000;
   }
   
-  /* ヘッダー内のラッパー */
   .header__inner {
     margin: 0 auto;
     padding: 20px 40px;
@@ -13,13 +12,11 @@
     align-items: center;
   }
   
-  /* ロゴ */
   .header-logo img {
     width: 370px;
     height: 36px;
   }
   
-  /* 検索フォーム */
   .header-search input[type="text"] {
     width: 500px;
     height: 50px;
@@ -30,7 +27,6 @@
     box-sizing: border-box;
   }
   
-  /* ナビゲーション */
   .header-nav {
     display: flex;
     align-items: center;
@@ -55,8 +51,7 @@
     text-align: center;
     vertical-align: middle;
   }
-  
-  /* ログアウトボタン */
+
   .header-nav__button {
     border: none;
     background: transparent;
@@ -71,7 +66,6 @@
     vertical-align: middle;
   }
   
-  /* タブ切り替え */
   .tab-switch {
     display: flex;
     gap: 30px;
@@ -106,7 +100,6 @@
     border-color: #000;
   }
   
-  /* 商品一覧 */
   .product-list {
     display: flex;
     flex-wrap: wrap;
@@ -128,4 +121,3 @@
   .sold-text {
     color: red;
   }
-  

@@ -9,9 +9,24 @@ class Product extends Model
 {
     use HasFactory;
 
-    public function category()
+    protected $fillable = [
+        'name',
+        'description',
+        'price',
+        'condition',
+        'image_path',
+        'user_id',
+        'category_id'
+    ];
+
+    protected $casts = [
+        'price' => 'integer',
+        'user_id' => 'integer',
+    ];
+
+    public function categories()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsToMany(Category::class)->withTimestamps();
     }
 
     public function comments()
@@ -21,11 +36,30 @@ class Product extends Model
 
     public function likedUsers()
     {
-    return $this->belongsToMany(
-        \App\Models\User::class,
-        'likes',
-        'product_id',
-        'user_id'
-    )->withTimestamps();
+        return $this->belongsToMany(
+            \App\Models\User::class,
+            'likes',
+            'product_id',
+            'user_id'
+        )->withTimestamps();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(\App\Models\User::class, 'user_id');
+    }
+    public function getDisplayImagePathAttribute(): ?string
+    {
+        return $this->image_path ?? $this->img_url ?? $this->image ?? null;
+    }
+
+    public function getDisplayImageUrlAttribute(): ?string
+    {
+        if (!$this->display_image_path) return null;
+
+        if (str_starts_with($this->display_image_path, 'storage/')) {
+            return asset($this->display_image_path);
+        }
+        return asset('storage/' . ltrim($this->display_image_path, '/'));
     }
 }

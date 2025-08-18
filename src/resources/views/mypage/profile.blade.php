@@ -9,10 +9,8 @@
 @section('content')
 <div class="profile-form__wrapper">
   <div class="profile-form__content">
-    {{-- 見出し --}}
     <h2 class="profile-form__heading">プロフィール設定</h2>
 
-    {{-- 更新成功メッセージ --}}
     @if(session('status'))
       <p class="form__status">{{ session('status') }}</p>
     @endif
@@ -23,7 +21,6 @@
           class="form">
       @csrf
 
-      {{-- プロフィール画像 --}}
       <div class="form__group profile-image">
         @if ($user->profile_image)
           <img src="{{ asset('storage/' . $user->profile_image) }}"
@@ -40,7 +37,6 @@
         @enderror
       </div>
 
-      {{-- ユーザー名 --}}
       <div class="form__group">
         <label class="form__group-title">ユーザー名</label>
         <div class="form__input--text">
@@ -53,7 +49,6 @@
         @enderror
       </div>
 
-      {{-- 郵便番号 --}}
       <div class="form__group">
         <label class="form__group-title">郵便番号</label>
         <div class="form__input--text">
@@ -66,7 +61,6 @@
         @enderror
       </div>
 
-      {{-- 住所 --}}
       <div class="form__group">
         <label class="form__group-title">住所</label>
         <div class="form__input--text">
@@ -79,7 +73,6 @@
         @enderror
       </div>
 
-      {{-- 建物名 --}}
       <div class="form__group">
         <label class="form__group-title">建物名</label>
         <div class="form__input--text">
@@ -92,7 +85,6 @@
         @enderror
       </div>
 
-      {{-- 更新ボタン --}}
       <div class="form__button">
         <button type="submit" class="form__button-submit">
           更新する

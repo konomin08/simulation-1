@@ -14,11 +14,11 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id(); // idカラム（主キー）
-            $table->string('name'); // 商品名
-            $table->integer('price'); // 価格（整数）
-            $table->text('description')->nullable(); // 説明文（任意）
-            $table->timestamps(); // created_atとupdated_at
+            $table->id();
+            $table->string('name');
+            $table->integer('price');
+            $table->text('description')->nullable();
+            $table->timestamps();
         });
     }
 

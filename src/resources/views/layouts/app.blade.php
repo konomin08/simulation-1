@@ -13,20 +13,18 @@
 
 <body class="@yield('body-class')">
   @php
-    // 会員登録ページ or ログインページだけの判定
     $isAuthPage = request()->is('login') || request()->is('register');
   @endphp
 
   <header class="header">
     <div class="header__inner">
-      <!-- ロゴは共通 -->
+
       <div class="header-logo">
         <a href="{{ url('/') }}">
           <img src="{{ asset('images/logo.svg') }}" alt="サイトロゴ">
         </a>
       </div>
 
-      <!-- 認証ページ以外だけナビと検索フォームを表示 -->
       @unless($isAuthPage)
         <div class="header-search">
           <form action="{{ route('index') }}" method="GET">

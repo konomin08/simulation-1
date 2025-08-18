@@ -25,7 +25,6 @@ class ProfileController extends Controller
             'profile_image' => 'nullable|image|max:2048',
         ]);
 
-            // 画像アップロード処理
         if ($request->hasFile('profile_image')) {
             $path = $request->file('profile_image')->store('profiles', 'public');
             $user->profile_image = $path;
@@ -38,7 +37,8 @@ class ProfileController extends Controller
         $user->profile_completed = true;
         $user->save();
 
-        return redirect('/')->with('status', 'プロフィールを更新しました！');
+        return redirect()->route('mypage')
+            ->with('status', 'プロフィールを更新しました。');
     }
 }
 

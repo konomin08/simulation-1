@@ -14,7 +14,6 @@ class AddConditionToProductsTable extends Migration
     public function up(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            // 修正前: $table->string('condition')->after('img_url');
             $table->string('condition');
         });
     }

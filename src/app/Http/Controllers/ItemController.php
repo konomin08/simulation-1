@@ -10,7 +10,7 @@ class ItemController extends Controller
 {
     public function show($item_id)
     {
-        $product = Product::with(['comments.user', 'category'])
+        $product = Product::with(['comments.user', 'categories'])
             ->withCount('comments')
             ->findOrFail($item_id);
 

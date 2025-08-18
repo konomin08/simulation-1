@@ -8,13 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    // ログインフォーム表示
     public function showLoginForm()
     {
         return view('auth.login');
     }
 
-    // ログイン処理
     public function login(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
@@ -22,7 +20,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->route('index'); // 商品一覧へ
+            return redirect()->route('index');
         }
 
         return back()->withErrors([
@@ -30,7 +28,6 @@ class LoginController extends Controller
         ])->withInput($request->only('email'));
     }
 
-    // ログアウト処理
     public function logout(Request $request)
     {
         Auth::logout();

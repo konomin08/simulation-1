@@ -51,4 +51,9 @@ class User extends Authenticatable
             'product_id'
         )->withTimestamps();
     }
+    public function products()
+    {
+    return $this->hasMany(\App\Models\Product::class, 'user_id');
+    }
+
 }
